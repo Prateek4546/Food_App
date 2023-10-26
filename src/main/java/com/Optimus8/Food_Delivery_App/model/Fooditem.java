@@ -19,6 +19,8 @@ public class Fooditem {
 
     String dishName;
      double prices;
+
+     @Enumerated(EnumType.STRING)
     FoodCategory category;
     boolean veg;
     boolean available;
