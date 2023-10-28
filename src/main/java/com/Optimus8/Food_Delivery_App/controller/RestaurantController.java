@@ -1,6 +1,7 @@
 package com.Optimus8.Food_Delivery_App.controller;
 
 import com.Optimus8.Food_Delivery_App.dto.reponse.RestaurantResponse;
+import com.Optimus8.Food_Delivery_App.dto.request.FoodRequest;
 import com.Optimus8.Food_Delivery_App.dto.request.RestaurantRequest;
 import com.Optimus8.Food_Delivery_App.services.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +14,11 @@ import org.springframework.web.bind.annotation.*;
 public class RestaurantController {
 
     final RestaurantService restaurantService;
+
     @Autowired
     public  RestaurantController(RestaurantService restaurantService){
         this.restaurantService = restaurantService;
+
     }
     @PostMapping("/add")
     public ResponseEntity addRestaurnt(@RequestBody RestaurantRequest restaurantRequest){
@@ -32,4 +35,16 @@ public class RestaurantController {
             return new ResponseEntity(e.getMessage() , HttpStatus.BAD_REQUEST);
         }
      }
+     @PostMapping("/add/food")
+     public  ResponseEntity addFooditemToRestaurant(@RequestBody  FoodRequest foodRequest){
+        try{
+            RestaurantResponse restaurantResponse = restaurantService.addFooditemToRestaurant(foodRequest);
+            return new ResponseEntity(restaurantResponse , HttpStatus.CREATED);
+        }
+        catch(Exception e){
+           return  new ResponseEntity(e.getMessage() , HttpStatus.BAD_REQUEST);
+        }
+     }
+
+     // get menu for restaurant
 }
