@@ -1,7 +1,7 @@
 package com.Optimus8.Food_Delivery_App.Enums;
 
 public enum FoodCategory {
-      STARTER,
+   STARTER,
     MAIN_COURSE,
     CHINESE,
     ITELIAN,
